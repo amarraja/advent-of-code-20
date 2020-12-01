@@ -1,20 +1,18 @@
 defmodule Day01 do
-  def part1(input) do
-    input =
-      input
-      |> String.split()
-      |> Enum.map(&String.to_integer/1)
+  defp parse(input) do
+    input
+    |> String.split()
+    |> Enum.map(&String.to_integer/1)
+  end
 
+  def part1(input) do
+    input = parse(input)
     [{x, y} | _] = for x <- input, y <- input, x + y == 2020, do: {x, y}
     x * y
   end
 
   def part2(input) do
-    input =
-      input
-      |> String.split()
-      |> Enum.map(&String.to_integer/1)
-
+    input = parse(input)
     [{x, y, z} | _] = for x <- input, y <- input, z <- input, x + y + z == 2020, do: {x, y, z}
     x * y * z
   end
